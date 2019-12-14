@@ -20,6 +20,11 @@ from django.conf.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("frontend.urls")),
+    path('items', include("frontend.urls")),
+    path('suppliers', include("frontend.urls")),
+    path('invoices', include("frontend.urls")),
+    path('login', include("frontend.urls")),
+    path('register', include("frontend.urls")),
     path('api/', include("api.urls")),
-    path('auth/', include('rest_framework.urls')),
+    path('', include('accounts.urls'))
 ]

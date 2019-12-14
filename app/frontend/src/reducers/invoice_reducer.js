@@ -1,21 +1,20 @@
-import { GET_SUPPLIERS, ADD_SUPPLIERS } from '../actions/types';
+import { GET_INVOICES, ADD_INVOICE } from '../actions/types';
 
 const initialstate = {
-	invoices : [
-		// 	{
-		// 		invoiceNo    : 5484515,
-		// 		SupplierName : 'Supplier 1',
-		// 		datetime     : '12/12/2019'
-		// 	},
-	]
+	invoices : []
 };
 
 const invoiceReducer = (state = initialstate, action) => {
 	switch (action.type) {
-		case GET_SUPPLIERS:
+		case GET_INVOICES:
 			return {
 				...state,
-				items : action.payload
+				invoices : action.payload
+			};
+		case ADD_INVOICE:
+			return {
+				...state,
+				invoices : [ ...state.invoices, action.payload ]
 			};
 		default:
 			return state;

@@ -15,7 +15,7 @@ class SupplierSerializer(serializers.HyperlinkedModelSerializer):
         fields = ("url", "name", "contact", "GSTNo")
 
 
-class InvoiceSerializer(serializers.HyperlinkedModelSerializer):
+class InvoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invoice
         fields = ("url", "InvoiceNo", "Supplier", "items", "date")

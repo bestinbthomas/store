@@ -1,23 +1,7 @@
-import { GET_SUPPLIERS, ADD_SUPPLIERS } from '../actions/types';
+import { GET_SUPPLIERS, ADD_SUPPLIERS, MOD_SUPPLIERS, DEL_SUPPLIERS } from '../actions/types';
 
 const initialstate = {
-	suppliers : [
-		// {
-		// 	name   : 'Neil',
-		// 	contct : '999999999',
-		// 	GST_NO : 26455154
-		// },
-		// {
-		// 	name   : 'supplier 2',
-		// 	contct : '8888888888',
-		// 	GST_NO : 454518
-		// },
-		// {
-		// 	name   : 'supplier 3',
-		// 	contct : '7777777777',
-		// 	GST_NO : 545548
-		// }
-	]
+	suppliers : []
 };
 
 const suppliersReducer = (state = initialstate, action) => {
@@ -26,6 +10,22 @@ const suppliersReducer = (state = initialstate, action) => {
 			return {
 				...state,
 				suppliers : action.payload
+			};
+		case ADD_SUPPLIERS:
+			return {
+				...state,
+				suppliers : [ ...state.suppliers, action.payload ]
+			};
+		case MOD_SUPPLIERS:
+			const s = { ...state };
+			s.suppliers.map((supplier) => {
+				if ((supplier.name === action.payload.name)) return action.payload;
+				return supplier;
+			});
+			return s;
+		case DEL_SUPPLIERS:
+			return {
+				suppliers: state.suppliers.filter((supplier) => supplier.name !== action.payload)
 			};
 		default:
 			return state;

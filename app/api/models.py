@@ -16,7 +16,7 @@ class Item(models.Model):
     BasePrice = models.FloatField()
     MRP = models.FloatField()
     GST = models.FloatField()
-    AgreedMargin = models.IntegerField()
+    AgreedMargin = models.FloatField()
 
     def __str__(self):
         return self.name
@@ -24,7 +24,7 @@ class Item(models.Model):
 
 class Invoice(models.Model):
     InvoiceNo = models.IntegerField(primary_key=True)
-    Supplier = models.ForeignKey(Supplier, default=1, on_delete=models.SET_DEFAULT)
+    Supplier = models.ForeignKey(Supplier, default=1, on_delete=models.PROTECT)
     items = models.ManyToManyField(Item)
     date = models.DateField(auto_now_add=True)
 
