@@ -24,7 +24,7 @@ SECRET_KEY = 'v!n&!ji&o3c+8mpja#itt)vrbi!c=4qas_!_3zg8zde5#7gh3l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['adithsriram.pythonanywhere.com',]
 
 # Application definition
 
@@ -38,14 +38,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend',
     'api',
-    'corsheaders',
     'knox',
     'accounts'
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'corsheaders.middleware.CorsPostCsrfMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,14 +53,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOW_CREDENTIALS = False
-CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8000',
-]
-CORS_ORIGIN_REGEX_WHITELIST = [
-    'http://127.0.0.1:8000',
-]
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -133,5 +122,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+# STATIC_ROOT = "/home/myusername/myproject/static"
+# or, eg,
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
